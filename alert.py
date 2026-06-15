@@ -667,21 +667,28 @@ def format_event_embed(event):
     else:
         change_tok = "changed"
 
-    # ── Single colour-coded line: emoji · label · region · controller · change [· res%] ──
-    parts = [f"{emoji} **{title_label}**", region_tok, ctrl_tok]
+    # ── Two lines ──
+    #   line 1: emoji · label · region · controller (the "Belgium occ." token)
+    #   line 2: everything after — the specific change, then resistance %
+    head_parts   = [f"{emoji} **{title_label}**", region_tok, ctrl_tok]
+    detail_parts = []
     if change_tok:
-        parts.append(change_tok)
+        detail_parts.append(change_tok)
 
     # Append a compact resistance % for context (skip resistance_full, it leads with the bar).
     if kind != "resistance_full":
         rr  = event.get("curr_resistance") or {}
         val, mx = rr.get("value"), rr.get("max")
         if isinstance(val, (int, float)) and isinstance(mx, (int, float)) and mx > 0:
-            parts.append(f"res {int(round(val / mx * 100))}%")
+            detail_parts.append(f"res {int(round(val / mx * 100))}%")
+
+    description = "  ·  ".join(head_parts)
+    if detail_parts:
+        description += "\n" + "  ·  ".join(detail_parts)
 
     return {
         "color":       color,
-        "description": "  ·  ".join(parts),
+        "description": description,
     }
 
 
