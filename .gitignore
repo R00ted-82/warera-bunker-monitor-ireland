@@ -1,0 +1,6 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Atomic-write temp files (state.json.tmp / runs.json.tmp)
+*.json.tmp

@@ -1,0 +1,25 @@
+name: bunker-heartbeat
+
+# Posts a daily status summary to Discord and warns if the alert cron looks
+# stalled. Read-only: it touches neither the API nor the state files, so there
+# is nothing to commit back.
+
+on:
+  schedule:
+    - cron: "0 9 * * *"     # daily at 09:00 UTC
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run heartbeat
+        env:
+          DISCORD_BUNKER_WEBHOOK_URL: ${{ secrets.DISCORD_BUNKER_WEBHOOK_URL }}
+        run: python alert.py --heartbeat

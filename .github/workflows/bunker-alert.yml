@@ -1,0 +1,44 @@
+name: bunker-alert
+
+# Polls the world map every 2 hours, posts alerts to Discord, and commits the
+# refreshed state.json / runs.json back so the next run has a baseline to diff.
+
+on:
+  schedule:
+    - cron: "0 */2 * * *"   # every 2 hours, on the hour (UTC)
+  workflow_dispatch:          # allow manual runs from the Actions tab
+
+permissions:
+  contents: write             # needed to push the updated state back
+
+# Never let two alert runs overlap: the commit-back would race.
+concurrency:
+  group: bunker-alert
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run alert
+        env:
+          DISCORD_BUNKER_WEBHOOK_URL: ${{ secrets.DISCORD_BUNKER_WEBHOOK_URL }}
+        run: python alert.py
+
+      - name: Commit refreshed state
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state.json runs.json
+          if git diff --cached --quiet; then
+            echo "no state changes to commit"
+          else
+            git commit -m "chore: update bunker state [skip ci]"
+            git push
+          fi
