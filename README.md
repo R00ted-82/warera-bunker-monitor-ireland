@@ -87,4 +87,4 @@ The Cloudflare proxy occasionally times out or cold-starts slowly. The bot retri
 
 ## Data source
 
-All map data comes through the public proxy at `https://warera-proxy.toie.workers.dev/trpc`, using `region.getRegionsObject` for the bulk snapshot and `upgrade.getUpgradeByTypeAndEntity` for per-bunker activation detail.
+All map data comes through the public proxy at `https://warera-proxy.r00ted82.workers.dev/trpc`, using `region.getRegionsObject` for the bulk snapshot and `upgrade.getUpgradeByTypeAndEntity` for per-bunker activation detail.

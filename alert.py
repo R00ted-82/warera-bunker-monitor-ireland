@@ -72,7 +72,7 @@ from pathlib import Path
 
 # ── Config ────────────────────────────────────────────────────────────────
 
-PROXY_BASE     = "https://warera-proxy.toie.workers.dev/trpc"
+PROXY_BASE     = "https://warera-proxy.r00ted82.workers.dev/trpc"
 GAME_BASE      = "https://app.warera.io"
 STATE_FILE     = Path(__file__).parent / "state.json"
 RUNS_FILE      = Path(__file__).parent / "runs.json"
