@@ -6,7 +6,7 @@ name: bunker-heartbeat
 
 on:
   schedule:
-    - cron: "0 9 * * *"     # daily at 09:00 UTC
+    - cron: "23 9 * * *"    # daily at 09:23 UTC — off the hour to dodge GitHub's congested top-of-hour queue
   workflow_dispatch:
 
 jobs:
