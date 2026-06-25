@@ -5,7 +5,7 @@ name: bunker-alert
 
 on:
   schedule:
-    - cron: "0 */2 * * *"   # every 2 hours, on the hour (UTC)
+    - cron: "23 */2 * * *"  # every 2 hours at :23 past (UTC) — off the hour to dodge GitHub's congested top-of-hour queue
   workflow_dispatch:          # allow manual runs from the Actions tab
 
 permissions:
