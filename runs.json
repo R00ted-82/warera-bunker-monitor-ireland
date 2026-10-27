@@ -1,12 +1,5 @@
 [
   {
-    "at": "2026-10-03T11:49:32.295475+00:00",
-    "success": true,
-    "total_events": 75,
-    "monitored_events": 9,
-    "regions": 726
-  },
-  {
     "at": "2026-10-03T16:31:15.009329+00:00",
     "success": true,
     "total_events": 57,
@@ -698,5 +691,13 @@
     "total_events": 64,
     "monitored_events": 2,
     "regions": 742
+  },
+  {
+    "at": "2026-10-27T08:01:30.314027+00:00",
+    "success": false,
+    "error": "GET https://warera-proxy.r00ted82.workers.dev/trpc/region.getRegionsObject failed after 3 attempts: The read operation timed out",
+    "total_events": 0,
+    "monitored_events": 0,
+    "regions": 0
   }
 ]
