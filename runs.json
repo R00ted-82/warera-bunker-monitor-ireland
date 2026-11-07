@@ -1,12 +1,5 @@
 [
   {
-    "at": "2026-10-14T07:47:26.486729+00:00",
-    "success": true,
-    "total_events": 61,
-    "monitored_events": 0,
-    "regions": 726
-  },
-  {
     "at": "2026-10-14T13:50:46.794059+00:00",
     "success": true,
     "total_events": 75,
@@ -698,6 +691,13 @@
     "at": "2026-11-07T08:56:16.247105+00:00",
     "success": true,
     "total_events": 40,
+    "monitored_events": 0,
+    "regions": 742
+  },
+  {
+    "at": "2026-11-07T16:31:41.111385+00:00",
+    "success": true,
+    "total_events": 35,
     "monitored_events": 0,
     "regions": 742
   }
